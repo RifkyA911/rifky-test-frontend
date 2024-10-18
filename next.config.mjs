@@ -1,4 +1,33 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+import createNextIntlPlugin from "next-intl/plugin";
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "static-src.vocagame.com",
+                port: "",
+                pathname: "/**",
+            },
+        ],
+    },
+    async headers() {
+        return [
+            {
+                source: "/(.*)",
+                headers: [
+                    {
+                        key: "X-Frame-Options",
+                        value: "SAMEORIGIN",
+                    },
+                ],
+            },
+        ];
+    },
+    reactStrictMode: true,
+};
+
+export default withNextIntl(nextConfig);

@@ -1,0 +1,66 @@
+{
+    "page_home": {
+        "title": "",
+        "section1": {
+            "title": "Starlight November 2023: Melissa “Nightwalker”",
+            "desc": "Segera dapatkan skin startlight Melissa “Nightwalker” dengan topup murah hanya di VocaGame.",
+            "flash_sale": {
+                "title": "Flash Sale",
+                "desc": "Segera dapatkan penawaran terbatas dari kami, jangan sampai ketinggalan!"
+            }
+        },
+        "section2": {
+            "title": "Temukan Game Favorit",
+            "btn": ["Rekomendasi", "Mobile Game", "PC Game"]
+        }
+    },
+    "page_products_id": {
+        "title": "Produk",
+        "section2": {
+            "title": "Pilih Produk",
+            "title2": "Topup Game",
+            "p1": "Lengkapi data dan dapatkan produk anda!",
+            "form": {
+                "user_id": "User ID",
+                "puser_id": "Masukkan User ID",
+                "zone_id": "Zone ID",
+                "pzone_id": "Masukkan Zone ID",
+                "wa": "Nomor WhatsApp",
+                "pwa": "Ketik nomor WA (081*********21)",
+                "disclamer": "Untuk mengetahui User ID Anda, silakan klik menu profile dibagian kiri atas pada menu utama game. User ID akan terlihat dibagian bawah Nama Karakter Game Anda. Silakan masukkan User ID dan Server ID / Zone ID Anda untuk menyelesaikan transaksi. User ID berada diluar tanda kurung dan Server ID / Zone ID didalam tanda kurung. Contoh : 12345678(1234).",
+                "promo_i": "Ketik kode promo (opsional)",
+                "promo_btn": "Gunakan",
+                "promo": "Lihat promo tersedia",
+                "title3": "Pilih Metode Pembayaran",
+                "fee": "Biaya Layanan"
+            }
+        }
+    },
+    "navbar": {
+        "search": "Cari...",
+        "auth": "Masuk/Daftar",
+        "links": [
+            "Beranda",
+            "Lacak Pesanan",
+            "Semua Game",
+            "Price List",
+            "Ulasan",
+            "Berita",
+            "Tiket HOKI"
+        ]
+    },
+    "footer": {
+        "logo": "H2H Logo",
+        "links": {
+            "map_site": {
+                "title": "Peta Situs",
+                "links": ["Beranda", "Semua Game", "Masuk", "Daftar"]
+            },
+            "top_up": "Top Up Lainnya",
+            "follow_us": "Ikuti Kami",
+            "contact_us": "Kontak Kami",
+            "business_question": "Pertanyaan Bisnis"
+        },
+        "bottoms": ["Kebijakan Privasi", "Terms of Service", "Hubungi Kami"]
+    }
+}
