@@ -1,20 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import {
-    manrope,
-    notoSans,
-    plusJakarta,
-    poppins,
-    spaceGrostesk,
-} from "@/components/main/font";
-import {
-    ALLPaymentMethod,
-    IPaymentMethod,
-    paymentEWallet,
-    paymentMethods,
-    paymentQRIS,
-} from "@/config";
-
+import { manrope, spaceGrostesk } from "@/components/main/font";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import {
@@ -23,40 +9,31 @@ import {
     Item,
 } from "@/lib/services/products-detail";
 import { HandleLoading, HandleNoData } from "@/components/main/status";
-import { Separator } from "@/components/ui/separator";
-import { z } from "zod";
-import { RiCustomerService2Fill } from "react-icons/ri";
-import { RiFileCopy2Line } from "react-icons/ri";
 import usePaymentMethodStore from "@/lib/store";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 
-const formSchema = z.object({
-    user_id: z
-        .string()
-        .min(2, { message: "User ID minimal 2 huruf" })
-        .default(""),
-    zone_id: z
-        .string()
-        .min(2, { message: "Zone ID minimal 2 huruf" })
-        .default(""),
-    wa: z
-        .string()
-        .min(10, { message: "Nomor WhatsApp minimal 10 huruf" })
-        .default("08"),
-    promo_code: z.string().default(""),
-    payment_method: paymentMethods.default("QRIS"),
-});
-
-const ProductsID = ({ params }: { params: { id: string } }) => {
+const Order = ({ params }: { params: { id: string } }) => {
     const t = useTranslations("page_order");
     const { paymentMethod, setPaymentMethod, resetPaymentMethod } =
         usePaymentMethodStore();
 
     const [product, setProduct] = useState<IFavouriteGame | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [currentItem, setCurrentItem] = useState<Item | null>();
+
+    useEffect(() => {
+        if (product?.items && product.items.length > 0 && paymentMethod)
+            console.log(product.items);
+        setCurrentItem(
+            product?.items.find((item) => {
+                console.log(item.id, parseInt(paymentMethod.item_id));
+                return item.id == parseInt(paymentMethod.item_id);
+            })
+        );
+    }, [product, paymentMethod]);
 
     function getThisProductDetail() {
         if (paymentMethod)
@@ -136,85 +113,110 @@ const ProductsID = ({ params }: { params: { id: string } }) => {
                                 >
                                     {t("h1")}
                                 </h1>
-                                <Link
-                                    href="/order/1"
-                                    className={
-                                        manrope.className +
-                                        " flex flex-col md:flex-row w-full gap-4 justify-between relative bg-[#282828] px-5 py-6 rounded-xl"
-                                    }
-                                >
-                                    <div className="flex flex-row gap-4 md:gap-9">
-                                        <Image
-                                            src="/images/products/pp.png"
-                                            alt="product"
-                                            width={40}
-                                            height={40}
-                                            className="w-[40px] h-[40px]"
-                                        />
-                                        <div className="flex flex-col ">
-                                            <p className="text-sm text-[#C9C9C9]">
-                                                Mobile Legends Bang Bang
-                                            </p>
-                                            <p className="text-white font-semibold">
-                                                14820 Diamonds (12389 + 2431
-                                                Bonus)
-                                            </p>
+                                {product &&
+                                currentItem &&
+                                paymentMethod.payment_status == "success" ? (
+                                    <Link
+                                        href="/order/1"
+                                        className={
+                                            manrope.className +
+                                            " flex flex-col md:flex-row w-full gap-4 justify-between relative bg-[#282828] px-5 py-6 rounded-xl"
+                                        }
+                                    >
+                                        <div className="flex flex-row gap-4 md:gap-9">
+                                            <Image
+                                                src="/images/products/pp.png"
+                                                alt="product"
+                                                width={40}
+                                                height={40}
+                                                className="w-[40px] h-[40px]"
+                                            />
+                                            <div className="flex flex-col ">
+                                                <p className="text-sm text-[#C9C9C9]">
+                                                    {product.name}
+                                                </p>
+                                                <p className="text-white font-semibold">
+                                                    {currentItem.name}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="flex flex-row gap-4 md:gap-9">
-                                        <div className="flex flex-col ">
-                                            <p className="text-sm text-[#C9C9C9]">
-                                                {t("p1")}
-                                            </p>
-                                            <p className="text-white  font-semibold">
-                                                {new Intl.NumberFormat(
-                                                    "id-ID",
+                                        <div className="flex flex-row gap-4 md:gap-9">
+                                            <div className="flex flex-col ">
+                                                <p className="text-sm text-[#C9C9C9]">
+                                                    {t("p1")}
+                                                </p>
+                                                <p className="text-white  font-semibold">
+                                                    {new Intl.NumberFormat(
+                                                        "id-ID",
+                                                        {
+                                                            style: "currency",
+                                                            currency: "IDR",
+                                                        }
+                                                    ).format(
+                                                        currentItem.priceDiscount ??
+                                                            currentItem.price
+                                                    )}
+                                                </p>
+                                            </div>
+                                            <div className="flex flex-col ">
+                                                <p className="text-sm text-[#C9C9C9]">
+                                                    {t("p2")}
+                                                </p>
+                                                <p className="text-white  font-semibold">
                                                     {
-                                                        style: "currency",
-                                                        currency: "IDR",
+                                                        paymentMethod.payment_method
                                                     }
-                                                ).format(3056113)}
-                                            </p>
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div className="flex flex-col ">
-                                            <p className="text-sm text-[#C9C9C9]">
-                                                {t("p2")}
-                                            </p>
-                                            <p className="text-white  font-semibold">
-                                                QRIS
-                                            </p>
+                                        <div className="flex flex-row gap-4 md:gap-9 items-center">
+                                            <div className="flex flex-col ">
+                                                <p className="text-sm text-[#C9C9C9]">
+                                                    {t("p3")}
+                                                </p>
+                                                <p className="text-white  font-semibold">
+                                                    {new Intl.DateTimeFormat(
+                                                        "id-ID",
+                                                        {
+                                                            year: "numeric",
+                                                            month: "2-digit",
+                                                            day: "2-digit",
+                                                        }
+                                                    ).format(
+                                                        new Date(
+                                                            paymentMethod.created_at as any
+                                                        )
+                                                    )}
+                                                </p>
+                                            </div>
+                                            <Button
+                                                type="button"
+                                                size={"lg"}
+                                                className={`${
+                                                    paymentMethod.payment_status ==
+                                                    "success"
+                                                        ? "bg-[#95BF001A]/10 text-[#95BF00]"
+                                                        : "bg-white/10 text-white"
+                                                } font-semibold`}
+                                            >
+                                                {paymentMethod.payment_status}
+                                            </Button>
                                         </div>
+                                    </Link>
+                                ) : (
+                                    <div className="flex flex-col justify-center items-center gap-4 my-8">
+                                        <Image
+                                            src="/images/order/maintenance.png"
+                                            alt="line"
+                                            width={240}
+                                            height={240}
+                                            className="w-[160px] h-[160px]"
+                                        />
+                                        <p className="text-xs md:text-sm text-center px-8">
+                                            {t("no_data")}
+                                        </p>
                                     </div>
-                                    <div className="flex flex-row gap-4 md:gap-9 items-center">
-                                        <div className="flex flex-col ">
-                                            <p className="text-sm text-[#C9C9C9]">
-                                                {t("p3")}
-                                            </p>
-                                            <p className="text-white  font-semibold">
-                                                24 Agustus 2023, 14:08
-                                            </p>
-                                        </div>
-                                        <Button
-                                            type="button"
-                                            size={"lg"}
-                                            className="bg-[#95BF001A]/10 text-[#95BF00] font-semibold"
-                                        >
-                                            Success
-                                        </Button>
-                                    </div>
-                                </Link>
-                                <div className="flex flex-col justify-center items-center gap-4 my-8">
-                                    <Image
-                                        src="/images/order/maintenance.png"
-                                        alt="line"
-                                        width={240}
-                                        height={240}
-                                        className="w-[160px] h-[160px]"
-                                    />
-                                    <p className="text-xs md:text-sm text-center px-8">
-                                        {t("no_data")}
-                                    </p>
-                                </div>
+                                )}
                             </div>
                         </section>
                     </>
@@ -226,4 +228,4 @@ const ProductsID = ({ params }: { params: { id: string } }) => {
     );
 };
 
-export default ProductsID;
+export default Order;

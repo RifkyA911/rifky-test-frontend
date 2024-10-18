@@ -32,6 +32,7 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "../ui/switch";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import { Skeleton } from "../ui/skeleton";
 
 export interface IMenuItems {
     title: string;
@@ -66,14 +67,18 @@ export default function Navbar() {
     const [logged, setLogged] = useState(false);
     const { theme, setTheme, resolvedTheme } = useTheme();
     useEffect(() => {
-        console.log("Theme", theme);
         setIsMounted(true);
         setLogged(getCookie("ACC.TOKEN") ? true : false);
     }, [theme]);
 
     const activeClass = "font-semibold text-cyan-500 hover:text-white";
 
-    if (!isMounted) return null;
+    if (!isMounted)
+        return (
+            <nav className="w-screen navbar fixed top-0 shadow z-[100] bg-[#282828] min-h-[136px]">
+                <Skeleton className="h-4 w-[250px]" />
+            </nav>
+        );
     return (
         <nav className="w-screen navbar fixed top-0 shadow z-[100] bg-[#282828] zzzzzmax-h-[144px]">
             <div className="grid grid-rows-1 md:grid-rows-2">

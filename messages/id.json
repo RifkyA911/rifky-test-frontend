@@ -95,11 +95,15 @@
             }
         }
     },
-    "page_payment_pending": {
+    "page_payment": {
         "section1": {
             "h1": "Menunggu pembayaran",
             "p1": "Selesaikan pembayaran sebelum waktu habis",
             "p2": "Agar Pesanan Kamu Tidak Expired",
+            "day": "Hari",
+            "hour": "Jam",
+            "minute": "Menit",
+            "second": "Detik",
             "download": "Unduh QR Code"
         },
         "section2": {

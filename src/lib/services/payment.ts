@@ -20,7 +20,7 @@ export interface IFavouriteGame {
     items: Item[];
 }
 
-export const getProductDetailsByID = async (id: number) => {
+export const getProductDetailsByID = async (id: number | string) => {
     try {
         const req = await axios({
             method: "GET",

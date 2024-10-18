@@ -101,21 +101,21 @@ body {
     clip-path: polygon(90% 100%, 0% 100%, 0% 10%, 10% 0%, 100% 0%, 100% 90%);
 }
 
-.home-slide {
+.swiper-container {
     width: 1200px !important;
     height: 400px;
     display: flex;
     justify-content: center;
 }
 
-.home-pagination {
+.swiper-pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.home-dot {
-    width: 80px;
+.swiper-dot {
+    width: 10px;
     height: 12px;
     background-color: #ffffff;
     border-radius: 4px;
@@ -124,11 +124,29 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.home-dot-active {
+.swiper-dot-active {
     background-color: #282828;
     width: 120px;
 }
 
-.home-dot:hover {
+.swiper-dot:hover {
     background-color: #ff6347;
+}
+
+.flip-clock {
+    --fcc-flip-duration: 0.5s; /* transition duration when flip card */
+    --fcc-spacing: 4px; /* space between unit times and separators */
+    --fcc-digit-block-width: 20px; /* width of digit card */
+    --fcc-digit-block-height: 26px; /* height of digit card, highly recommend in even number */
+    --fcc-digit-block-radius: 4px; /* border radius of digit card */
+    --fcc-digit-block-spacing: 2px; /* space between blocks in each unit of time */
+    --fcc-digit-font-size: 25px; /* font size of digit */
+    --fcc-digit-color: white; /* color of digit */
+    --fcc-label-font-size: 10px; /* font size of label */
+    --fcc-label-color: #ffffff; /* color of label */
+    --fcc-background: #e64848; /* background of digit card */
+    --fcc-divider-color: white; /* color of divider */
+    --fcc-divider-height: 1px; /* height of divider */
+    --fcc-separator-size: 6px; /* size of colon */
+    --fcc-separator-color: red; /* color of colon */
 }

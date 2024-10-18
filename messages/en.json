@@ -1,9 +1,141 @@
 {
-    "/": {
+    "MainComponents": {
+        "HandleStatus": {
+            "HandleDataNotFound": {
+                "Title": "We apologize, but the content you are looking for is currently unavailable.",
+                "Description": "We recommend trying a different search term or exploring other topics."
+            },
+            "HandleMT": {
+                "Title": "Page Under Development",
+                "Description": "We apologize, we are currently updating this page."
+            },
+            "HandleNoData": {
+                "Title": "No data available",
+                "Description": "We will add this data soon."
+            },
+            "HandleNoContent": {
+                "Title": "No content available",
+                "Description": "We will add this content soon."
+            },
+            "HandleSuccess": {
+                "Title": "Thank you",
+                "Description": "We will contact you soon!"
+            },
+            "HandleError": {
+                "Title": "An error occurred",
+                "Description": "Please try again!",
+                "BtnBack": "Back",
+                "BtnTryAgain": "Try Again"
+            }
+        }
+    },
+    "navbar": {
+        "search": "Search...",
+        "auth": "Sign in/Register",
+        "links": [
+            "Home",
+            "Order Tracking",
+            "All Games",
+            "Price List",
+            "Reviews",
+            "News",
+            "HOKI Ticket"
+        ]
+    },
+    "footer": {
+        "logo": "H2H Logo",
+        "links": {
+            "map_site": {
+                "title": "Sitemap",
+                "links": ["Home", "All Games", "Sign in", "Register"]
+            },
+            "top_up": "Other Top Up",
+            "follow_us": "Follow Us",
+            "contact_us": "Contact Us",
+            "business_question": "Business Inquiry"
+        },
+        "bottoms": ["Privacy Policy", "Terms of Service", "Contact Us"]
+    },
+    "page_home": {
         "title": "",
         "section1": {
             "title": "Starlight November 2023: Melissa “Nightwalker”",
-            "desc": "Segera dapatkan skin startlight Melissa “Nightwalker” dengan topup murah hanya di VocaGame."
+            "desc": "Get the Starlight skin Melissa “Nightwalker” with cheap top-up only at VocaGame.",
+            "flash_sale": {
+                "title": "Flash Sale",
+                "desc": "Get the limited offer from us, don't miss out!"
+            }
+        },
+        "section2": {
+            "title": "Find Your Favorite Game",
+            "btn": ["Recommendation", "Mobile Game", "PC Game"]
         }
+    },
+    "page_products_id": {
+        "title": "Product",
+        "section2": {
+            "title": "Choose Product",
+            "title2": "Topup Game",
+            "p1": "Complete the data and get your product!",
+            "form": {
+                "user_id": "User ID",
+                "puser_id": "Enter User ID",
+                "zone_id": "Zone ID",
+                "pzone_id": "Enter Zone ID",
+                "wa": "WhatsApp Number",
+                "pwa": "Enter WA number (081*********21)",
+                "disclamer": "To find out your User ID, please click on the profile menu at the top left of the game main menu. User ID will appear below your character name. Please enter your User ID and Server ID / Zone ID to complete the transaction. User ID is outside the brackets and Server ID / Zone ID is inside the brackets. Example: 12345678(1234).",
+                "promo_i": "Enter promo code (optional)",
+                "promo_btn": "Use",
+                "promo": "See available promo",
+                "title3": "Choose Payment Method",
+                "fee": "Service Fee",
+                "price": "Price",
+                "submit": "Buy Now"
+            }
+        }
+    },
+    "page_payment": {
+        "section1": {
+            "h1": "Waiting for payment",
+            "p1": "Complete payment before time runs out",
+            "p2": "So your order doesn't expire",
+            "day": "Day",
+            "hour": "Hour",
+            "minute": "Minute",
+            "second": "Second",
+            "download": "Download QR Code"
+        },
+        "section2": {
+            "p1": "Date of Purchase",
+            "p2": "Order Number",
+            "p3": "Payment Method",
+            "p31": " For All Payments",
+            "price": "Price",
+            "unique_code": "Unique Code",
+            "total": "Total Payment",
+            "mobile_total": "Total",
+            "bottom": "Already paid but order not yet entered?",
+            "mobile_bottom": "Need Help?",
+            "contact": "Contact us"
+        },
+        "payment_success": {
+            "h1": "Payment Details",
+            "info": "Order Successful",
+            "p1": "Add Review",
+            "textarea": "Transaction smooth and safe!",
+            "add": "Add Review",
+            "link": "Back to Home"
+        }
+    },
+    "page_order": {
+        "pl1": "Enter phone number (0812*******)",
+        "btn1": "Search Order",
+        "disclamer": "Your order is not registered even though you are sure you have ordered? please wait 1-2 hours but if the order still doesn't appear then you can contact us via ",
+        "h1": "Order History",
+        "p1": "Product Price",
+        "p2": "Payment Method",
+        "p3": "Date",
+        "no_data": "Product cannot be displayed yet, please enter phone number first"
     }
 }

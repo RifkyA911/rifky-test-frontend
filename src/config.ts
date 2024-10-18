@@ -25,7 +25,7 @@ export const paymentQRIS = [
     {
         id: "QRIS",
         name: "QRIS",
-        fee: "+ Rp 1.500,-",
+        fee: 1.5,
         icon: "/images/payment/qris.png",
     },
 ];
@@ -33,25 +33,25 @@ export const paymentEWallet = [
     {
         id: "DANA",
         name: "DANA",
-        fee: "+ Rp 1.500,-",
+        fee: 1.5,
         icon: "/images/payment/dana.png",
     },
     {
         id: "OVO",
         name: "OVO",
-        fee: "+ Rp 1.500,-",
+        fee: 1.5,
         icon: "/images/payment/ovo.png",
     },
     {
         id: "SHOPEE_PAY",
         name: "SHOPEE_PAY",
-        fee: "+ Rp 1.500,-",
+        fee: 1.5,
         icon: "/images/payment/shopee_pay.png",
     },
     {
         id: "LINK_AJA",
         name: "LINK_AJA",
-        fee: "+ Rp 1.500,-",
+        fee: 1.5,
         icon: "/images/payment/link_aja.png",
     },
 ];

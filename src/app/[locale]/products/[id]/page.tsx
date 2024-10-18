@@ -46,7 +46,7 @@ import {
     PaymentMethodCard,
 } from "./_components/paymentMethod";
 import { Button } from "@/components/ui/button";
-import { calculateDiscountPercentage } from "@/lib/utils";
+import { calculateDiscountPercentage, generateInvoiceId } from "@/lib/utils";
 import { MdHeadsetMic } from "react-icons/md";
 import { PiShieldCheckFill } from "react-icons/pi";
 import { IoLogoGameControllerB } from "react-icons/io";
@@ -149,13 +149,24 @@ const ProductsID = ({ params }: { params: { id: string } }) => {
         console.log("submitting...");
 
         setPaymentMethod({
-            game_id: getValues("game_id"),
+            invoice_id: generateInvoiceId(),
             user_id: data.user_id,
             zone_id: data.zone_id,
             wa: data.wa,
             promo_code: data.promo_code,
             payment_method: selectPayment,
             payment_status: "pending",
+            game_id: getValues("game_id"),
+            username: "SilverStone",
+            item_id: selectProduct?.id.toString() || "",
+            price: selectProduct?.price || 0,
+            discount: selectProduct?.priceDiscount || 0,
+            fee:
+                ALLPaymentMethod.find((item) => item.name === selectPayment)
+                    ?.fee || 0,
+            end_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
         });
 
         const updatedPaymentMethod =
@@ -164,7 +175,7 @@ const ProductsID = ({ params }: { params: { id: string } }) => {
 
         setTimeout(() => {
             setIsSubmitting(false);
-            router.push("/payment/pending");
+            router.push("/payment");
         }, 3000);
     };
 

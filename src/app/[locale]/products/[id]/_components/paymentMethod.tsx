@@ -60,7 +60,7 @@ export interface IPaymentMethodCard {
     name: string;
     // href: string;
     icon: string;
-    fee: string;
+    fee: number;
     selectPayment: any;
     setSelectPayment: any;
 }
@@ -70,7 +70,7 @@ export const PaymentMethodCard = ({
     id = null,
     name,
     icon,
-    fee = "+ Rp 1.500,-",
+    fee = 1.5,
     selectPayment,
     setSelectPayment,
 }: IPaymentMethodCard) => {

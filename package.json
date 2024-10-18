@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
+    "@leenguyen/react-flip-clock-countdown": "^1.6.0",
     "@nimpl/middleware-chain": "^0.4.0",
     "@pqina/tick": "^1.8.2",
     "@radix-ui/react-accordion": "^1.2.1",
@@ -52,6 +53,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
     "postcss": "^8",
+    "react-flip-counter": "^0.4.0",
     "react-icons": "^5.3.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
