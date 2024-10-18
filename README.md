@@ -45,6 +45,16 @@ This project demonstrates the following:
     - Integrated **next-intl** for language change functionality, allowing users to toggle between different languages seamlessly.
     - Implemented a theme toggle feature for switching between light and dark themes, enhancing user experience based on personal preferences.
 
+## 🌐 SEO Metadata
+
+To improve search engine visibility, the following SEO metadata is implemented:
+
+-   **Title**: The title of the page is dynamically set based on the content.
+-   **Description**: Each page includes a meta description that summarizes the content for search engines.
+-   **Open Graph Tags**: For social media sharing, Open Graph tags are included to control how content appears when shared.
+-   **Keywords**: Relevant keywords are included in the metadata to enhance searchability.
+-   **Robots Meta Tag**: Set to control how search engines index the pages.
+
 ## 🚀 Getting Started
 
 Follow the steps below to set up the project locally.
