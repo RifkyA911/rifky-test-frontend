@@ -56,7 +56,7 @@ export const SelectProductList = ({
                     manrope.className + " grid grid-cols-2 md:grid-cols-3 gap-4"
                 }
             >
-                {product.items.map((item, index) => (
+                {product.items.map((item: Item, index: number) => (
                     <SelectProduct
                         key={index}
                         data={item}

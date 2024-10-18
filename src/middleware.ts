@@ -11,9 +11,9 @@ const intlMiddleware = createMiddleware({
 
 export const middleware = chain([
     async (req: NextRequest) => {
-        const token = cookies().get("CMS.TOKEN")?.value;
-        const url = req.nextUrl.clone();
-        const pathname = url.pathname;
+        // const token = cookies().get("CMS.TOKEN")?.value;
+        // const url = req.nextUrl.clone();
+        // const pathname = url.pathname;
 
         const referer = req.headers.get("referer");
         let refererLocale = "";
