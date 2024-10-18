@@ -2,7 +2,7 @@ import { poppins } from "@/components/main/font";
 import { GrRadial, GrRadialSelected } from "react-icons/gr";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { FaCheck, FaChevronRight, FaTag } from "react-icons/fa";
+import { FaCheck, FaChevronRight, FaTag } from "react-icons/fa6";
 import Link from "next/link";
 import { FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Search } from "lucide-react";
@@ -82,7 +82,7 @@ export const PaymentMethodCard = ({
                 selectPayment == name
                     ? "outline outline-2 outline-white"
                     : "outline-none"
-            } flex md:flex-col gap-3 md:h-[238.53px] md:bg-[#3E3E3E] p-3 rounded-xl mx-[2px] relative`}
+            } flex md:flex-col gap-3 md:h-[238.53px] md:bg-[#3E3E3E] p-3 rounded-xl mx-[2px] relative cursor-pointer`}
             onClick={() => {
                 setSelectPayment(name);
             }}

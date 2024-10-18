@@ -1,4 +1,61 @@
 {
+    "MainComponents": {
+        "HandleStatus": {
+            "HandleDataNotFound": {
+                "Title": "Kami mohon maaf, namun konten yang Anda cari tidak tersedia saat ini.",
+                "Description": "Kami merekomendasikan untuk mencoba istilah penelusuran yang berbeda atau menjelajahi topik lain."
+            },
+            "HandleMT": {
+                "Title": "Halaman Dalam Proses Pengembangan",
+                "Description": "Kami mohon maaf, kami sedang memperbarui halaman ini."
+            },
+            "HandleNoData": {
+                "Title": "Belum ada data",
+                "Description": "Kami akan segera menambahkan data ini."
+            },
+            "HandleNoContent": {
+                "Title": "Tidak ada konten",
+                "Description": "Kami akan segera menambahkan konten ini."
+            },
+            "HandleSuccess": {
+                "Title": "Terima kasih",
+                "Description": "Kami akan segera menghubungi Anda!"
+            },
+            "HandleError": {
+                "Title": "Terjadi kesalahan",
+                "Description": "Silahkan coba kembali!",
+                "BtnBack": "Kembali",
+                "BtnTryAgain": "Coba Lagi"
+            }
+        }
+    },
+    "navbar": {
+        "search": "Cari...",
+        "auth": "Masuk/Daftar",
+        "links": [
+            "Beranda",
+            "Lacak Pesanan",
+            "Semua Game",
+            "Price List",
+            "Ulasan",
+            "Berita",
+            "Tiket HOKI"
+        ]
+    },
+    "footer": {
+        "logo": "H2H Logo",
+        "links": {
+            "map_site": {
+                "title": "Peta Situs",
+                "links": ["Beranda", "Semua Game", "Masuk", "Daftar"]
+            },
+            "top_up": "Top Up Lainnya",
+            "follow_us": "Ikuti Kami",
+            "contact_us": "Kontak Kami",
+            "business_question": "Pertanyaan Bisnis"
+        },
+        "bottoms": ["Kebijakan Privasi", "Terms of Service", "Hubungi Kami"]
+    },
     "page_home": {
         "title": "",
         "section1": {
@@ -32,35 +89,49 @@
                 "promo_btn": "Gunakan",
                 "promo": "Lihat promo tersedia",
                 "title3": "Pilih Metode Pembayaran",
-                "fee": "Biaya Layanan"
+                "fee": "Biaya Layanan",
+                "price": "Harga",
+                "submit": "Beli Sekarang"
             }
         }
     },
-    "navbar": {
-        "search": "Cari...",
-        "auth": "Masuk/Daftar",
-        "links": [
-            "Beranda",
-            "Lacak Pesanan",
-            "Semua Game",
-            "Price List",
-            "Ulasan",
-            "Berita",
-            "Tiket HOKI"
-        ]
-    },
-    "footer": {
-        "logo": "H2H Logo",
-        "links": {
-            "map_site": {
-                "title": "Peta Situs",
-                "links": ["Beranda", "Semua Game", "Masuk", "Daftar"]
-            },
-            "top_up": "Top Up Lainnya",
-            "follow_us": "Ikuti Kami",
-            "contact_us": "Kontak Kami",
-            "business_question": "Pertanyaan Bisnis"
+    "page_payment_pending": {
+        "section1": {
+            "h1": "Menunggu pembayaran",
+            "p1": "Selesaikan pembayaran sebelum waktu habis",
+            "p2": "Agar Pesanan Kamu Tidak Expired",
+            "download": "Unduh QR Code"
         },
-        "bottoms": ["Kebijakan Privasi", "Terms of Service", "Hubungi Kami"]
+        "section2": {
+            "p1": "Tanggal Pembelian",
+            "p2": "Nomor Pesanan",
+            "p3": "Metode Pembayaran",
+            "p31": " Untuk Semua Pembayaran",
+            "price": "Harga",
+            "unique_code": "Kode Unik",
+            "total": "Total Pembayaran",
+            "mobile_total": "Total",
+            "bottom": "Sudah bayar namun pesanan belum masuk?",
+            "mobile_bottom": "Butuh Bantuan?",
+            "contact": "Hubungi kami"
+        },
+        "payment_success": {
+            "h1": "Detail Pembayaran",
+            "info": "Pesanan Berhasil",
+            "p1": "Tambahkan Ulasan",
+            "textarea": "Transaksi lancar dan aman!",
+            "add": "Tambahkan Ulasan",
+            "link": "Kembali ke Beranda"
+        }
+    },
+    "page_order": {
+        "pl1": "Ketik nomor HP (0812*******)",
+        "btn1": "Cari Pesanan",
+        "disclamer": "Pesanan kamu tidak terdaftar meskipun kamu yakin sudah memesan? harap tunggu 1-2 jam namun jika pesanan masih tidak muncul maka kamu dapat menghubungi kami via ",
+        "h1": "Riwayat Pesanan",
+        "p1": "Harga Produk",
+        "p2": "Metode Pembayaran",
+        "p3": "Tanggal",
+        "no_data": "Produk belum bisa ditampilkan, silakan isi nomor HP terlebih dahulu"
     }
 }

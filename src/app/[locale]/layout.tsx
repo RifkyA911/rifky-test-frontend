@@ -40,7 +40,7 @@ export default function LocaleLayout(props: {
     return (
         <html lang="en">
             <body
-                className={`${manrope.className} ${spaceGrostesk.className} antialiased`}
+                className={`${manrope.className} ${spaceGrostesk.className} antialiased relative`}
             >
                 {/* <Provider> */}
                 <NextIntlClientProvider

@@ -1,6 +1,7 @@
 import { manrope, notoSans, poppins } from "@/components/main/font";
 import { Separator } from "@/components/ui/separator";
 import { Item } from "@/lib/services/products-detail";
+import { calculateDiscountPercentage } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { FaCheck } from "react-icons/fa6";
@@ -74,32 +75,25 @@ export const SelectProduct = ({
     setSelectProduct,
 }: {
     data: Item;
-    selectProduct: number | null;
-    setSelectProduct: React.Dispatch<React.SetStateAction<number>>;
+    selectProduct: Item | null;
+    setSelectProduct: React.Dispatch<React.SetStateAction<Item>>;
 }) => {
-    const calculateDiscountPercentage = (
-        originalPrice: number,
-        discountedPrice: number
-    ) => {
-        if (originalPrice <= 0) {
-            throw new Error("Harga asli harus lebih besar dari nol.");
-        }
-        const discountAmount = originalPrice - discountedPrice;
-        const discountPercentage = (discountAmount / originalPrice) * 100;
-
-        if (discountPercentage < 0) {
-            return null;
-        }
-        return discountPercentage.toFixed(2);
-    };
     return (
         <div
             className={`rounded-xl flex md:gap-2 outline  ${
-                selectProduct == data.id
+                selectProduct?.id == data.id
                     ? "outline-2 outline-white bg-white/10"
                     : "outline-1 outline-[#3E3E3E]"
             } p-3 relative cursor-pointer `}
-            onClick={() => setSelectProduct(data.id)}
+            onClick={() =>
+                setSelectProduct({
+                    id: data.id,
+                    name: data.name,
+                    price: data.price,
+                    priceDiscount: data.priceDiscount,
+                    iconUrl: data.iconUrl,
+                })
+            }
         >
             <div className="flex flex-col md:gap-2">
                 <p className="text-[10px] md:text-xs">{data.name}</p>
@@ -155,8 +149,8 @@ export const SelectProduct = ({
                     className="w-6 md:w-8 h-6 md:h-8"
                 />
             </div>
-            {selectProduct == data.id && (
-                <div className="absolute bg-white bottom-[-2px] right-[-2px] p-1 rounded-lg">
+            {selectProduct?.id == data.id && (
+                <div className="absolute bg-white bottom-[-2px] right-[-2px] p-1 rounded-tl-lg rounded-br-lg">
                     <FaCheck className="w-4 h-4 text-black" />
                 </div>
             )}

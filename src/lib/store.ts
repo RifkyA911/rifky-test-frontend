@@ -1,52 +1,65 @@
+import { IPaymentMethod } from "@/config";
 import { create } from "zustand";
-import { v4 as uuid } from "uuid";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 
-export type Status = "TODO" | "IN_PROGRESS" | "DONE";
+interface PaymentMethod {
+    user_id: string;
+    zone_id: string;
+    wa: string;
+    promo_code?: string;
+    payment_method: IPaymentMethod;
+    payment_status: "pending" | "success" | "failed";
+    game_id: string;
+}
 
-export type Task = {
-  id: string;
-  title: string;
-  description?: string;
-  status: Status;
-};
+interface PaymentMethodStore {
+    paymentMethod: PaymentMethod;
+    setPaymentMethod: (data: Partial<PaymentMethod>) => void;
+    resetPaymentMethod: () => void;
+    updatePaymentStatus: (status: PaymentMethod["payment_status"]) => void;
+}
 
-export type State = {
-  tasks: Task[];
-  draggedTask: string | null;
-};
-
-export type Actions = {
-  addTask: (title: string, description?: string) => void;
-  dragTask: (id: string | null) => void;
-  removeTask: (title: string) => void;
-  updateTask: (title: string, status: Status) => void;
-};
-
-export const useTaskStore = create<State & Actions>()(
-  persist(
-    (set) => ({
-      tasks: [],
-      draggedTask: null,
-      addTask: (title: string, description?: string) =>
-        set((state) => ({
-          tasks: [
-            ...state.tasks,
-            { id: uuid(), title, description, status: "TODO" },
-          ],
-        })),
-      dragTask: (id: string | null) => set({ draggedTask: id }),
-      removeTask: (id: string) =>
-        set((state) => ({
-          tasks: state.tasks.filter((task) => task.id !== id),
-        })),
-      updateTask: (id: string, status: Status) =>
-        set((state) => ({
-          tasks: state.tasks.map((task) =>
-            task.id === id ? { ...task, status } : task
-          ),
-        })),
-    }),
-    { name: "task-store", skipHydration: true }
-  )
+const usePaymentMethodStore = create<PaymentMethodStore>()(
+    persist(
+        (set) => ({
+            paymentMethod: {
+                user_id: "",
+                zone_id: "",
+                wa: "",
+                promo_code: "",
+                payment_method: "QRIS",
+                payment_status: "pending",
+                game_id: "",
+            },
+            setPaymentMethod: (data) =>
+                set((state) => ({
+                    paymentMethod: { ...state.paymentMethod, ...data },
+                })),
+            resetPaymentMethod: () =>
+                set({
+                    paymentMethod: {
+                        user_id: "",
+                        zone_id: "",
+                        wa: "",
+                        promo_code: "",
+                        payment_method: "QRIS",
+                        payment_status: "pending",
+                        game_id: "",
+                    },
+                }),
+            updatePaymentStatus: (status) =>
+                set((state) => ({
+                    paymentMethod: {
+                        ...state.paymentMethod,
+                        payment_status: status,
+                    },
+                })),
+        }),
+        {
+            name: "payment-method-storage",
+            storage: createJSONStorage(() => localStorage),
+        }
+    )
 );
+
+export default usePaymentMethodStore;

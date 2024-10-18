@@ -46,15 +46,17 @@ export const paymentEWallet = [
         id: "SHOPEE_PAY",
         name: "SHOPEE_PAY",
         fee: "+ Rp 1.500,-",
-        icon: "/images/payment/shopeepay.png",
+        icon: "/images/payment/shopee_pay.png",
     },
     {
         id: "LINK_AJA",
         name: "LINK_AJA",
         fee: "+ Rp 1.500,-",
-        icon: "/images/payment/linkaja.png",
+        icon: "/images/payment/link_aja.png",
     },
 ];
+
+export const ALLPaymentMethod = [...paymentQRIS, ...paymentEWallet];
 
 export const pathnames: Pathnames<typeof locales> = {
     "/": "/",
