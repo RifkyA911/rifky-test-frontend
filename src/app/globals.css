@@ -101,20 +101,20 @@ body {
     clip-path: polygon(90% 100%, 0% 100%, 0% 10%, 10% 0%, 100% 0%, 100% 90%);
 }
 
-.swiper-container {
+.home-container {
     width: 1200px !important;
     height: 400px;
     display: flex;
     justify-content: center;
 }
 
-.swiper-pagination {
+.home-pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.swiper-dot {
+.home-dot {
     width: 10px;
     height: 12px;
     background-color: #ffffff;
@@ -124,12 +124,12 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.swiper-dot-active {
+.home-dot-active {
     background-color: #282828;
     width: 120px;
 }
 
-.swiper-dot:hover {
+.home-dot:hover {
     background-color: #ff6347;
 }
 

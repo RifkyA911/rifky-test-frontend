@@ -64,7 +64,7 @@ export const PaymentPendingContent = ({
         const timer = setTimeout(() => {
             updatePaymentStatus("success");
             console.log("Payment status updated to success.");
-        }, 9995000);
+        }, 5000);
 
         return () => clearTimeout(timer);
     }, []);
