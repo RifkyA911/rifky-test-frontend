@@ -55,6 +55,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
 import { useRouter } from "next/navigation";
 import usePaymentMethodStore from "@/lib/store";
+import { ProductSkeleton } from "./_components/skeleton";
 
 const formSchema = z.object({
     game_id: z.string().default(""),
@@ -186,7 +187,8 @@ const ProductsID = ({ params }: { params: { id: string } }) => {
                 className="min-h-screen w-full "
             >
                 {isLoading ? (
-                    <HandleLoading />
+                    // <HandleLoading />
+                    <ProductSkeleton />
                 ) : product ? (
                     <>
                         <div className="flex flex-col w-full gap-4  relative mb-[110px]">
