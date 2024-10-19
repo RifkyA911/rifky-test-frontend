@@ -17,6 +17,7 @@ import { IFavouriteGame } from "@/lib/services/payment";
 import usePaymentMethodStore from "@/lib/store";
 import { useEffect, useState } from "react";
 import { calculateTimeComponents, formatTimeValue } from "@/lib/utils";
+import { PendingSkeleton } from "./skeleton";
 
 export const PaymentPendingContent = ({
     product,
@@ -63,7 +64,7 @@ export const PaymentPendingContent = ({
         const timer = setTimeout(() => {
             updatePaymentStatus("success");
             console.log("Payment status updated to success.");
-        }, 5000);
+        }, 9995000);
 
         return () => clearTimeout(timer);
     }, []);
@@ -287,7 +288,10 @@ export const PaymentPendingContent = ({
                             </div>
                         </div>
                         <Link
-                            href="/contact-us"
+                            href="#"
+                            onClick={() => {
+                                updatePaymentStatus("success");
+                            }}
                             className={
                                 poppins.className +
                                 " w-full flex gap-2 bg-[#282828] py-5 px-8 rounded-xl font-semibold"
@@ -304,7 +308,7 @@ export const PaymentPendingContent = ({
                         </Link>
                     </div>
                 ) : (
-                    <>Loading</>
+                    <PendingSkeleton />
                 )}
             </section>
         </div>

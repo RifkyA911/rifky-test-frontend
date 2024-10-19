@@ -10,6 +10,7 @@ import { HandleLoading, HandleNoData } from "@/components/main/status";
 import usePaymentMethodStore from "@/lib/store";
 import { PaymentPendingContent } from "./_components/pending";
 import { PaymentCompleteContent } from "./_components/complete";
+import { motion } from "framer-motion";
 
 const Payment = () => {
     const t = useTranslations("page_payment");
@@ -42,14 +43,19 @@ const Payment = () => {
                 {isLoading ? (
                     <HandleLoading />
                 ) : paymentMethod ? (
-                    <>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5 }}
+                    >
                         {paymentMethod.payment_status === "pending" && (
                             <PaymentPendingContent product={product} />
                         )}
                         {paymentMethod.payment_status === "success" && (
                             <PaymentCompleteContent product={product} />
                         )}
-                    </>
+                    </motion.div>
                 ) : (
                     <HandleNoData />
                 )}

@@ -9,7 +9,10 @@ import { IFavouriteGame } from "@/lib/services/payment";
 import usePaymentMethodStore from "@/lib/store";
 import { FaStar } from "react-icons/fa6";
 import { Textarea } from "@/components/ui/textarea";
-
+import { PendingSkeleton } from "./skeleton";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Particles from "react-tsparticles";
 export const PaymentCompleteContent = ({
     product,
 }: {
@@ -17,8 +20,18 @@ export const PaymentCompleteContent = ({
 }) => {
     const t = useTranslations("page_payment");
 
-    const { paymentMethod, setPaymentMethod, resetPaymentMethod } =
-        usePaymentMethodStore();
+    const {
+        paymentMethod,
+        setPaymentMethod,
+        resetPaymentMethod,
+        updatePaymentStatus,
+    } = usePaymentMethodStore();
+
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
     return (
         <div className="flex flex-col w-full gap-4 relative mb-[110px]">
             <section
@@ -28,9 +41,17 @@ export const PaymentCompleteContent = ({
                 }
             >
                 {product ? (
-                    <div className="flex flex-col gap-8 md:gap-5 w-full md:w-[793px]  items-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: isMounted ? 1 : 0, y: 0 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                        className="flex flex-col gap-8 md:gap-5 w-full md:w-[793px]  items-center"
+                    >
                         <div className="flex w-full flex-col items-center bg-[#282828] rounded-t-xl">
-                            <div
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
                                 className={
                                     poppins.className +
                                     " flex flex-col md:flex-row w-full gap-5 md:items-center justify-between p-4 md:p-8 bg-[#16C8291A]/10 rounded-t-xl"
@@ -75,7 +96,7 @@ export const PaymentCompleteContent = ({
                                 >
                                     {t("payment_success.info")}
                                 </p>
-                            </div>
+                            </motion.div>
                             <div className="md:hidden flex flex-col gap-4 w-full justify-start p-4">
                                 <div className="flex flex-col gap-2">
                                     <p className="text-xs text-[#A1A1A1]">
@@ -132,7 +153,10 @@ export const PaymentCompleteContent = ({
                             </div>
                             <Separator className=" bg-[#3E3E3E]" />
                             <InfoCard context="success" product={product} />
-                            <div
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
                                 className={
                                     poppins.className +
                                     "flex flex-row md:grid md:grid-cols-2 gap-4 w-full p-4 md:py-5 md:px-8 bg-[#16C829] text-white rounded-b-xl"
@@ -165,9 +189,14 @@ export const PaymentCompleteContent = ({
                                         }}
                                     />
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
-                        <div className="flex w-full flex-col p-4 md:p-8 gap-6 bg-[#282828] rounded-xl">
+                        <div
+                            className="flex w-full flex-col p-4 md:p-8 gap-6 bg-[#282828] rounded-xl"
+                            onClick={() => {
+                                updatePaymentStatus("pending");
+                            }}
+                        >
                             <h1 className="text-2xl font-bold text-white">
                                 {t("payment_success.p1")}
                             </h1>
@@ -207,9 +236,9 @@ export const PaymentCompleteContent = ({
                         >
                             {t("payment_success.link")}
                         </Link>
-                    </div>
+                    </motion.div>
                 ) : (
-                    <>Loading</>
+                    <PendingSkeleton />
                 )}
             </section>
         </div>
