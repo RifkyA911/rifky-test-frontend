@@ -43,40 +43,40 @@ export const SwiperNavigation = ({
 
     return (
         <div className="w-full mx-auto overflow-hidden relative">
-            {slideIndex}
             {context === "banners" && (
                 <>
                     <div className="hidden md:block relative">
                         <Swiper
-                            modules={[Pagination]}
+                            modules={[Pagination, Navigation, EffectCoverflow]}
                             slidesPerView={1.3}
                             spaceBetween={40}
-                            // loop={true}
-                            // centeredSlides={true}
+                            loop={true}
+                            centeredSlides={true}
+                            onSwiper={(swiper) => {
+                                console.log(swiper.activeIndex);
+                                swiperRef.current = swiper;
+                            }}
+                            onSlideChange={(swiper) => {
+                                setSlideIndex(swiper.activeIndex);
+                            }}
+                            breakpoints={{
+                                390: {
+                                    slidesPerView: 1,
+                                },
+                                768: {
+                                    slidesPerView: 1.2,
+                                },
+                                1024: {
+                                    slidesPerView: 1.3,
+                                },
+                            }}
                             navigation={true}
-                            // onSwiper={(swiper) => {
-                            //     console.log(swiper.activeIndex);
-                            //     swiperRef.current = swiper;
-                            // }}
-                            // onSlideChange={(swiper) => {
-                            //     setSlideIndex(swiper.activeIndex);
-                            // }}
-                            // breakpoints={{
-                            //     390: {
-                            //         slidesPerView: 1,
-                            //     },
-                            //     768: {
-                            //         slidesPerView: 1.2,
-                            //     },
-                            //     1024: {
-                            //         slidesPerView: 1.3,
-                            //     },
-                            // }}
                             pagination={{
                                 clickable: true,
-                                el: ".home-container",
+                                el: ".home-pagination",
                                 type: "bullets",
-                                bulletActiveClass: ".home-dot-active",
+                                // bulletClass: ".home-dot",
+                                // bulletActiveClass: ".home-dot-active",
                             }}
                             // onActiveIndexChange={(swiper) => {
                             //     console.log(
@@ -84,13 +84,13 @@ export const SwiperNavigation = ({
                             //         swiper.activeIndex
                             //     );
                             // }}
-                            // effect={"coverflow"}
-                            // coverflowEffect={{
-                            //     rotate: 0,
-                            //     stretch: 0,
-                            //     depth: 100,
-                            //     modifier: 2.5,
-                            // }}
+                            effect={"coverflow"}
+                            coverflowEffect={{
+                                rotate: 0,
+                                stretch: 0,
+                                depth: 100,
+                                modifier: 2.5,
+                            }}
                         >
                             {data.map((slide, index) => (
                                 <SwiperSlide
@@ -116,8 +116,9 @@ export const SwiperNavigation = ({
                                 </SwiperSlide>
                             ))}
                         </Swiper>
-                        <div className="home-container"></div>
-                        <div className="absolute top-[340px] left-1/2 z-[999999999999999999]"></div>
+                        <div className="absolute top-[340px] left-1/2 z-[999]">
+                            <div className="home-pagination"></div>
+                        </div>
                     </div>
                     <div className="md:hidden">
                         <Swiper
