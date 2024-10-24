@@ -1,6 +1,6 @@
-# 🎮 Test Front End VocaGame - Top Up Games with POS System
+# 🎮 Top Up Games with POS System
 
-Welcome to the **VocaGame** technical test project! This front-end application allows users to select games, choose top-up amounts, and process payments through a point-of-sale (POS) system.
+Welcome to the **Top Up Games with POS System** technical test project! This front-end application allows users to select games, choose top-up amounts, and process payments through a point-of-sale (POS) system.
 
 ## 🏆 Project Goals
 
